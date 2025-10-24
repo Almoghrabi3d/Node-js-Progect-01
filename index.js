@@ -16,8 +16,14 @@ app.get("/numbers", (req, res) => {
     for (let i = 1; i <= 100; i++) {
         numbers += i + " _ ";
     }
-    res.send(`the numbers from 1 to 100 are: ${numbers}`);
+    res.send(`The Numbers from 1 to 100 are : ${numbers}`);
 });
+
+app.get("/sum", (req, res) => {
+    
+    res.send("The Sum =");
+} );
+
 
 app.get("/name", (req, res) => {
     res.send("My Name is Marwan Almoghrabi");
