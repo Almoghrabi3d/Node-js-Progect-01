@@ -1,6 +1,7 @@
 const express = require("express");
 
 const app = express();
+app.use(express.json()); 
 
 app.get("/", (req, res) => {
     res.send("Root");
@@ -19,11 +20,30 @@ app.get("/numbers", (req, res) => {
     res.send(`The Numbers from 1 to 100 are : ${numbers}`);
 });
 
-app.get("/sum", (req, res) => {
-    
-    res.send("The Sum =");
+app.get("/sum/:number1/:number2", (req, res) => {
+    const num1 =  req.params.number1;
+    const num2 =  req.params.number2;
+    const total = Number(num1) + Number(num2);
+        res.send(`The Sum = ${total}`);
 } );
 
+app.get("/sayHello", (req, res) => {
+   console.log(req.body);
+   console.log(req.query);  
+   res.send(`Hello ${req.body.name} Your Age is ${req.query.age}`);
+});
+
+app.get("/Info", (req, res) => { 
+
+    res.json({
+        name: "Marwan Almoghrabi",
+        age: 42,
+        city: "Jarash",
+        profession: "Blockchain Developer",
+        country: "Jordan",
+        language: "JavaScript & Python & Solidity & HTML & CSS"
+    });
+});
 
 app.get("/name", (req, res) => {
     res.send("My Name is Marwan Almoghrabi");
