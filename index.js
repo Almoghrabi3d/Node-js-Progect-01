@@ -61,6 +61,9 @@ app.put("/enter", (req, res) => {
     res.send("Enter your email");
 });
 
+app.get("/welcome", (req, res) => {
+    res.send("<h1>Welcome to my API!</h1>");
+});
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
