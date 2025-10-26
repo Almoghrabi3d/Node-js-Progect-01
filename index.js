@@ -1,6 +1,12 @@
 const express = require("express");
-
+const mongoose = require("mongoose");
 const app = express();
+mongoose.connect("mongodb+srv://Almoghrabi:Bitcoin$m01123581321@cluster0.dqi3ngm.mongodb.net/?appName=Cluster0",)
+.then(() => { 
+    console.log("Successfully connected to MongoDB"); 
+}).catch((error) => {
+    console.log("Failed to connect to MongoDB", error);
+})
 app.use(express.json()); 
 
 app.get("/", (req, res) => {
