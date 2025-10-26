@@ -62,7 +62,14 @@ app.put("/enter", (req, res) => {
 });
 
 app.get("/welcome", (req, res) => {
-    res.send("<h1>Welcome to my API!</h1>");
+
+        let numbers = "";
+    for (let i = 1; i <= 100; i++) {
+        numbers += i + " _ ";
+    }
+
+    //res.sendFile(__dirname + "/Views/welcome.ejs");
+    res.render("welcome.ejs", { numbers: numbers });
 });
 
 app.listen(3000, () => {
