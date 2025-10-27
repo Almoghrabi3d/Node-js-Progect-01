@@ -1,6 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+
+const Artical = require("./models/Artical");
+
 mongoose.connect("mongodb+srv://Almoghrabi:Bitcoin$m01123581321@cluster0.dqi3ngm.mongodb.net/?appName=Cluster0",)
 .then(() => { 
     console.log("Successfully connected to MongoDB"); 
@@ -76,6 +79,22 @@ app.get("/welcome", (req, res) => {
 
     //res.sendFile(__dirname + "/Views/welcome.ejs");
     res.render("welcome.ejs", { numbers: numbers });
+});
+
+// ========================= Artical Endpoints ========================= 
+app.post("/articals", async (req, res) => {
+    const newArtical = new Artical();
+
+
+    const articalTitle = req.body.articalTitle;
+    const articalBody = req.body.articalBody;
+
+    newArtical.title = articalTitle; 
+    newArtical.body = articalBody;
+    newArtical.numberOfLikes = 0;
+    await newArtical.save();
+
+    res.json("Artical created successfully");
 });
 
 app.listen(3000, () => {
