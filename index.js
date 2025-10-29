@@ -97,6 +97,25 @@ app.post("/articals", async (req, res) => {
     res.json("Artical created successfully");
 });
 
+app.get("/articals", async (req, res) => {
+    const articals = await Artical.find();
+    res.json(articals);
+});
+
+app.get("/articals/:articalId", async (req, res) => {
+    const articalId = req.params.articalId;
+    const artical =  await Artical.findById(articalId);
+    res.json(artical);
+}); 
+
+app.delete("/articals/:articalId", async (req, res) => {
+    const articalId = req.params.articalId;
+    await Artical.findByIdAndDelete(articalId);
+    res.json("Artical deleted successfully");
+});
+
+// =====================================================================    
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
