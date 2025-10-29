@@ -114,6 +114,11 @@ app.delete("/articals/:articalId", async (req, res) => {
     res.json("Artical deleted successfully");
 });
 
+app.get("/showArticalPage", async (req, res) => {
+    const articals = await Artical.find();
+    res.render("articalForm.ejs", { allArticals: articals });
+});
+
 // =====================================================================    
 
 app.listen(3000, () => {
