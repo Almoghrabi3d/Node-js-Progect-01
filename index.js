@@ -13,7 +13,7 @@ mongoose.connect("mongodb+srv://Almoghrabi:Bitcoin$m01123581321@cluster0.dqi3ngm
 app.use(express.json()); 
 
 app.get("/", (req, res) => {
-    res.send("Root");
+    res.send("Welcome to the Home Page!");
 });
 
 app.get("/Hello", (req, res) => {
